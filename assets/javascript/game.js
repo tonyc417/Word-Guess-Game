@@ -1,17 +1,24 @@
 var wordGuess = document.querySelector('input');
+var wordSolution = document.querySelector('.randomWord');
 var lettersTried = document.querySelector('.tried');
+var start = document.querySelector('.lives');
 var solution = ["apple", "python", "white"];
-var liveStart = 10;
-var triesLeft = 0;
+var guessStart = 10;
 var wins = 0;
 var guessField = [];
 
 
-function gameStats() {
+function reset() {
+    guessStart;
+    var chooseWord = solution[Math.floor(Math.random()*solution.length)];
+
+    guessField = [];
 
 }
 
+function gameStats() {
 
+}
 
 // wordGuess.onkeyup = letterGuess;
 
