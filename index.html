@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="text/stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Word Guess</title>
 </head>
 <body>
@@ -15,10 +15,10 @@
         <p>Press any key to get started!</p>
         <p>Wins</p>
         <p>Current Word</p>
-        <p class="randomWord">Keep trying:</p>
+        <h3 id="solved-answer">______</h3>
         <input maxlength="6">
         <p class="lives">Number of guesses remaining</p>
-        <p class="tried">Letters Guessed: </p>
+        <h5 class="tried">Letters Already Guessed: </h5>
         <input class="reset" type="button" value="Reset">
     </div>
 
