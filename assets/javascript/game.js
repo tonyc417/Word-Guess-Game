@@ -3,17 +3,22 @@ var wordSolution = document.querySelector('#solved');
 var lettersTried = document.querySelector('.tried');
 var start = document.querySelector('.lives');
 var resetBtn = document.querySelector('.reset');
+var testingStage = document.querySelector('.testing');
 var solution = ["apple", "python", "white"];
 var solvedWord = [];
-var guessLives = 10;
-var wins = 0;
 var guessField = [];
+var guessLives = 10;
+var guessLeft = 0;
+var wins = 0;
+
+var chooseWord = solution[Math.floor(Math.random() * solution.length)];
+
+
 
 resetBtn.addEventListener("click", reset);
 
 function reset() {
-    start.innerHTML = "Number of guesses remaining: " + guessLives;
-    var chooseWord = solution[Math.floor(Math.random() * solution.length)];
+    guessLives = 10;
 
     guessField = [];
 
@@ -29,8 +34,19 @@ function letterGuess(event) {
         lettersTried.innerHTML = "You pressed: " + event.key + " Letters Already Guessed: " + guessField;
         guessField.push(event.key);
     }
-    if (letter === 66) {
-        start.innerHTML = "Number of guesses remaining: " + guessLives--;
+    for (var i = 0; i < chooseWord.length; i++) {
+        if (letter >= chooseWord[i]) {
+            solved.innerHTML = event.key;
+        }    
+        console.log(chooseWord[i])   
+        }
     }
-}
+    // if (letter === chooseWord.length) {
+    //     wordSolution.innerHTML = "A____";
+    // }
+
+
+
+
+
 
