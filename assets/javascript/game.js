@@ -1,75 +1,66 @@
-var wordGuess = document.querySelector('input');
-var wordSolution = document.querySelector('#solved');
-var lettersTried = document.querySelector('.tried');
-var start = document.querySelector('.lives');
-var resetBtn = document.querySelector('.reset');
-var testingStage = document.querySelector('.testing');
-var solution = ["apple", "python", "white"];
-var solvedWord = [];
-var guessField = [];
-var guessLives = 10;
-var guessLeft = 0;
-var wins = 0;
+var wordSolution = document.querySelector("#currentWord"); // the word
+var lettersTried = document.querySelector('.tried'); // grabbing tried element in html
+var resetBtn = document.querySelector(".reset"); // selecting reset button
+var livesLeft = document.querySelector(".lives");
+var string;
 
-var chooseWord = solution[Math.floor(Math.random() * solution.length)];
+var solution = ["apple", "pyton", "white"]; //array of words to pick from 
+guessLives = 10; // lives you start with 
+letterSolution = []; // the word we pick
+guessField = []; // letters user guesses 
 
-console.log(chooseWord);
 
 resetBtn.addEventListener("click", reset);
+var chooseWord = solution[Math.floor(Math.random() * solution.length)];
 
 function reset() {
     guessLives = 10;
-
+    letterSolution = [];
     guessField = [];
-
 }
+reset();
 
-function testGuess(letter) {
 
-    var storeLetter = [];
-
+function displayStats() {
     for (var i = 0; i < chooseWord.length; i++) {
-        if (solution[i] === letter) {
-            storeLetter.push[i];
-            storeLetter.innerHTML = event.key;
-        }
+        letterSolution[i] = "_";
+        // wordSolution.innerHTML = letterSolution;
+        console.log(chooseWord[i]);
     }
+    
+    string = letterSolution.join(" ");
+    wordSolution.innerHTML = string;
 }
 
+displayStats();
 
-
-document.onkeyup = function(event) {
+document.onkeydown = function(event) {
     var letter = event.keyCode;
+    var solutionPrint = [];
+    // if (chooseWord.length) {
+    //     for (var i = 0; i <chooseWord.length; i++) {
+    //         if (chooseWord[i] == letter)
+    //         letterSolution[i] = chooseWord[i];
+    //     }
+    // }
+    for (var i = 0; i < chooseWord.length; i++) {
+       if (chooseWord[i] === event.key) {
+        // letterSolution[i] = event.key;
+        // letterSolution.innerHTML = event.key;
+        solutionPrint.push(event.key);
+        wordSolution.innerHTML = solutionPrint;
+       }
+    }
+
+    if (solutionPrint.length <= 0) {
+        livesLeft.innerHTML = "Guess remain: " + guessLives--;
+    } 
+
+    // letterSolution.innerHTML = event.key;
 
     if (letter >= 65 && letter <= 90) {
         lettersTried.innerHTML = "You pressed: " + event.key + " Letters Already Guessed: " + guessField;
         guessField.push(event.key);
-    }
+    } 
+    
 }
-
-// wordGuess.onkeyup = letterGuess;
-
-// function letterGuess(event) {
-
-//     var letter = event.keyCode;
-
-//     if (letter >= 65 && letter <= 90) {
-//         lettersTried.innerHTML = "You pressed: " + event.key + " Letters Already Guessed: " + guessField;
-//         guessField.push(event.key);
-//     }
-//     for (var i = 0; i < chooseWord.length; i++) {
-//         if (letter  chooseWord[i]) {
-//             solved.innerHTML = event.key;
-//         }    
-//         console.log(chooseWord[i])   
-//         }
-//     }
-    // if (letter === chooseWord.length) {
-    //     wordSolution.innerHTML = "A____";
-    // }
-
-
-
-
-
-
