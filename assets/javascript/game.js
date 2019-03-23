@@ -2,6 +2,7 @@ var wordSolution = document.querySelector("#currentWord"); // the word
 var lettersTried = document.querySelector('.tried'); // grabbing tried element in html
 var resetBtn = document.querySelector(".reset"); // selecting reset button
 var livesLeft = document.querySelector(".lives");
+var gameLost = document.querySelector('.gameover');
 var string;
 
 var solution = ["apple", "pyton", "white"]; //array of words to pick from 
@@ -17,6 +18,7 @@ function reset() {
     guessLives = 10;
     letterSolution = [];
     guessField = [];
+    solutionPrint = [];
 }
 reset();
 
@@ -24,7 +26,6 @@ reset();
 function displayStats() {
     for (var i = 0; i < chooseWord.length; i++) {
         letterSolution[i] = "_";
-        // wordSolution.innerHTML = letterSolution;
         console.log(chooseWord[i]);
     }
     
@@ -37,16 +38,9 @@ displayStats();
 document.onkeydown = function(event) {
     var letter = event.keyCode;
     var solutionPrint = [];
-    // if (chooseWord.length) {
-    //     for (var i = 0; i <chooseWord.length; i++) {
-    //         if (chooseWord[i] == letter)
-    //         letterSolution[i] = chooseWord[i];
-    //     }
-    // }
+
     for (var i = 0; i < chooseWord.length; i++) {
        if (chooseWord[i] === event.key) {
-        // letterSolution[i] = event.key;
-        // letterSolution.innerHTML = event.key;
         solutionPrint.push(event.key);
         wordSolution.innerHTML = solutionPrint;
        }
@@ -56,7 +50,10 @@ document.onkeydown = function(event) {
         livesLeft.innerHTML = "Guess remain: " + guessLives--;
     } 
 
-    // letterSolution.innerHTML = event.key;
+    if (guessLives === 0 ) {
+        gameLost.setAttribute = ("class", ".gameover");
+        gameLost.innerHTML = "You lost! Try again by pressing the reset button!";
+    }
 
     if (letter >= 65 && letter <= 90) {
         lettersTried.innerHTML = "You pressed: " + event.key + " Letters Already Guessed: " + guessField;
